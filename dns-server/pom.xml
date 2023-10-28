@@ -8,7 +8,8 @@
 		<module>TopLevelDomain</module>
 		<module>nameserver</module>
 		<module>eureka-server</module>
-	</modules>
+        <module>api-gateway</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

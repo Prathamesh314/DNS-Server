@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
         <module name="nameserver" />
         <module name="TopLevelDomain" />
         <module name="rootservice" />
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Eureka-Server" options="-parameters" />
       <module name="TopLevelDomain" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="dns-server" options="" />
       <module name="eureka-server" options="-parameters" />
       <module name="nameserver" options="-parameters" />
