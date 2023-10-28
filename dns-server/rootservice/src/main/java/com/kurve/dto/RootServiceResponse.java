@@ -12,6 +12,4 @@ import lombok.NoArgsConstructor;
 public class RootServiceResponse {
     private Long id;
     private String TopLevelDomain;
-    private String name;
-
 }

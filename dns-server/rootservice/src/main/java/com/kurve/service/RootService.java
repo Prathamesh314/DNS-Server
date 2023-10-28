@@ -24,18 +24,12 @@ public class RootService {
         rootRepository.save(rootServer1);
     }
 
-    public List<RootServiceResponse> getAllNames(){
-        return rootRepository.findAll().stream().map(this::MapToResponse).collect(Collectors.toList());
-    }
-
-    private RootServiceResponse MapToResponse(RootServer rootServer) {
-        int n = rootServer.getName().lastIndexOf(".");
-        String tld = rootServer.getName().substring(n);
+    public RootServiceResponse getAllNames(String name){
+        int n = name.lastIndexOf(".");
+        String tld = name.substring(n);
 //        int n = arr.length;
         return RootServiceResponse.builder()
-                .id(rootServer.getId())
                 .TopLevelDomain(tld)
-                .name(rootServer.getName())
                 .build();
     }
 

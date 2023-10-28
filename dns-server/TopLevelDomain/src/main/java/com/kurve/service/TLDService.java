@@ -1,9 +1,11 @@
 package com.kurve.service;
 
+import com.kurve.dto.RootServiceResponse;
 import com.kurve.dto.TLDResponse;
 import com.kurve.repository.TLDRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +16,13 @@ public class TLDService {
 
     private final TLDRepository tldRepository;
 
+
+    private final WebClient.Builder webClient;
     public List<String> getDomains()
     {
         List<java.lang.String> tlds = new ArrayList<>();
         tlds.add(".com");
+        tlds.add(".in");
         tlds.add(".org");
         tlds.add(".net");
         tlds.add(".gov");
@@ -59,11 +64,11 @@ public class TLDService {
     }
 
     public Boolean checkValidity(String name){
-        int n = name.lastIndexOf(".");
-        String s = name.substring(n);
+        RootServiceResponse response = webClient.build().get().uri("http://ROOT-LEVEL/root/"+name).retrieve()
+                .bodyToMono(RootServiceResponse.class).block();
         List<String> domains = getDomains();
         for(String k: domains){
-            if(k.equalsIgnoreCase(s)){
+            if(k.equalsIgnoreCase(response.getTopLevelDomain())){
                 return true;
             }
         }

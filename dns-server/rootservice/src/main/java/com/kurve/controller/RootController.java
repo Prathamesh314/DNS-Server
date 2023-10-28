@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/root")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RootController {
 
     private final RootService rootService;
@@ -24,11 +25,11 @@ public class RootController {
         return "Domain name registered successfully";
     }
 
-    @GetMapping("/")
+    @GetMapping("/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<RootServiceResponse> getTopLevelDomain()
+    public RootServiceResponse getTopLevelDomain(@PathVariable String name)
     {
-        return rootService.getAllNames();
+        return rootService.getAllNames(name);
     }
 
 }
