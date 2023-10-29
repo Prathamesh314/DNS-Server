@@ -17,4 +17,5 @@ Frontend is implemented in react
          This service takes domain name {.com,.org....} from Rootservice and checks its validity and return response to Nameserver
       - #### Nameserver
          This service takes response from Top Level Domain and returns ip-address for given website if it is valid else throws error
+- I have also integrated Redis for RateLimiting, just to prevent from DoS attack, if a domain is continuousy making Api Request then we are blocking that request
   
