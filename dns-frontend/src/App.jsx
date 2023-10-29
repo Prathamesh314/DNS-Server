@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import "./App.css";
-import {  useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 function App() {
-
   const requestOptions = {
-    method: 'GET', 
-    mode: 'no-cors',
+    method: "GET",
+    mode: "no-cors",
   };
   const [ipAddress, setIpAddress] = useState("");
   const [name, setName] = useState("");
@@ -14,10 +13,12 @@ function App() {
   // console.log(name);
   const handleOnClick = async () => {
     console.log(name);
-    const data = await axios.get(`http://localhost:9191/nameserver/${name}`, requestOptions).then((data)=>setIpAddress(data.data.ip))
+    const data = await axios
+      .get(`http://localhost:9191/nameserver/${name}`, requestOptions)
+      .then((data) => setIpAddress(data.data.ip));
     // console.log(data);
   };
-  
+
   return (
     <div className="container">
       <div className="title">DNS-SERVER</div>
@@ -27,13 +28,23 @@ function App() {
             <div className="timeline-start"></div>
             <div className="conference-center-line"></div>
             <div className="conference-timeline-content">
-              <div className="timeline-article timeline-article-bottom">
+              <div className="timeline-article timeline-article-top">
                 <div className="content-date">
-                  <span>DNS-Resolver</span>
+                  <span>Authorative Nameservices</span>
                 </div>
                 <div className="meta-date"></div>
                 <div className="content-box">
-                  <p>Gives The IP</p>
+                  <p>www.google.com</p>
+                </div>
+              </div>
+
+              <div className="timeline-article timeline-article-bottom">
+                <div className="content-date">
+                  <span>Top Level Domain Nameservcies</span>
+                </div>
+                <div className="meta-date"></div>
+                <div className="content-box">
+                  <p>.com .in .org .gov</p>
                 </div>
               </div>
 
@@ -49,20 +60,11 @@ function App() {
 
               <div className="timeline-article timeline-article-bottom">
                 <div className="content-date">
-                  <span>Top Level Domain Nameservcies</span>
+                  <span>DNS-Resolver</span>
                 </div>
                 <div className="meta-date"></div>
                 <div className="content-box">
-                  <p>.com .in .org .gov</p>
-                </div>
-              </div>
-              <div className="timeline-article timeline-article-top">
-                <div className="content-date">
-                  <span>Authorative Nameservices</span>
-                </div>
-                <div className="meta-date"></div>
-                <div className="content-box">
-                  <p>www.google.com</p>
+                  <p>Gives The IP</p>
                 </div>
               </div>
             </div>
@@ -77,7 +79,7 @@ function App() {
             className="form__field"
             placeholder="Name"
             name="name"
-            onChange={(e)=>setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             id="name"
             required
           />
