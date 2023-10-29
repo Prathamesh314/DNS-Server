@@ -3,6 +3,12 @@ package com.kurve;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Unit test for simple App.
@@ -35,4 +41,5 @@ public class AppTest
     {
         assertTrue( true );
     }
+
 }
