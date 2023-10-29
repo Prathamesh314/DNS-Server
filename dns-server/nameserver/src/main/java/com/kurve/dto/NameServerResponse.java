@@ -13,5 +13,6 @@ public class NameServerResponse {
 
     private String name;
     private String ip;
-
+    private String success;
+    private String message;
 }

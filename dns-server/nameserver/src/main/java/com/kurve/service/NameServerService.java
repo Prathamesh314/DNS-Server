@@ -24,13 +24,20 @@ public class NameServerService {
         TLDResponse response = webClient.build().get().uri("http://TOP-LEVEL-DOMAIN/tld/"+name).retrieve().bodyToMono(TLDResponse.class)
                 .block();
         boolean result = response.getValid();
-        if(result){
+        if(result) {
             return NameServerResponse.builder()
                     .name(name)
                     .ip(ip)
+                    .success("Success")
+                    .message("Generated Ip Address successfully for domain name: "+name)
                     .build();
         }
-        return null;
+        return NameServerResponse.builder()
+                .name(name)
+                .ip("")
+                .success("Failure")
+                .message("Invalid domain name: "+name)
+                .build();
     }
 
 }
