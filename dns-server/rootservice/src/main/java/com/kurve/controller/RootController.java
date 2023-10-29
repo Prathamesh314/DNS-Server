@@ -17,11 +17,11 @@ public class RootController {
 
     private final RootService rootService;
 
-    @PostMapping("/")
+    @PostMapping("/{name}")
     @ResponseStatus(HttpStatus.CREATED)
-    public String createroot(@RequestBody RootServiceRequest rootServer)
+    public String createroot(@PathVariable String name)
     {
-        rootService.createRoot(rootServer);
+        rootService.createRoot(name);
         return "Domain name registered successfully";
     }
 

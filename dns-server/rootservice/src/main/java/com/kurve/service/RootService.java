@@ -15,10 +15,10 @@ public class RootService {
 
     private  final RootRepository rootRepository;
 
-    public void createRoot(RootServiceRequest rootServer)
+    public void createRoot(String name)
     {
         RootServer rootServer1 = RootServer.builder()
-                .name(rootServer.getName())
+                .name(name)
                 .build();
 
         rootRepository.save(rootServer1);

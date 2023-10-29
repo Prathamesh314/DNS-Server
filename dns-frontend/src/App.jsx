@@ -7,17 +7,26 @@ function App() {
     method: "GET",
     mode: "no-cors",
   };
+
+  const postOptions = {
+    method:"POST",
+    mode: "no-cors",
+  };
   const [ipAddress, setIpAddress] = useState("");
   const [name, setName] = useState("");
 
-  // console.log(name);
+  const [postName, setPostName] = useState("");
+
   const handleOnClick = async () => {
     console.log(name);
     const data = await axios
       .get(`http://localhost:9191/nameserver/${name}`, requestOptions)
       .then((data) => setIpAddress(data.data.ip));
-    // console.log(data);
   };
+
+  const handleOnSubmit = async () =>{
+    await axios.post(`http://localhost:9191/root/${postName}`, postOptions);
+  }
 
   return (
     <div className="container">
