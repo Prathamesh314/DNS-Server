@@ -17,11 +17,12 @@ function App() {
 
   const [postName, setPostName] = useState("");
 
-  const handleOnClick = async () => {
+  const handleOnClick = async (e) => {
+    e.preventDefaultValue;
     console.log(name);
     const data = await axios
-      .get(`http://localhost:9191/nameserver/${name}`, requestOptions)
-      .then((data) => setIpAddress(data.data.ip));
+      .get(`http://localhost:9191/nameserver/${name}`, requestOptions).then((data)=>setIpAddress(data.data.ip));
+
   };
 
   const handleOnSubmit = async () =>{
