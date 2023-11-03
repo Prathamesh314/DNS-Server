@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DNS-Server.iml" filepath="$PROJECT_DIR$/.idea/DNS-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/TopLevelDomain/TopLevelDomain.iml" filepath="$PROJECT_DIR$/dns-server/TopLevelDomain/TopLevelDomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/dns-server/api-gateway/api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/dns-server.iml" filepath="$PROJECT_DIR$/dns-server/dns-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/dns-server/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/nameserver/nameserver.iml" filepath="$PROJECT_DIR$/dns-server/nameserver/nameserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dns-server/rootservice/rootservice.iml" filepath="$PROJECT_DIR$/dns-server/rootservice/rootservice.iml" />
+    </modules>
+  </component>
+</project>

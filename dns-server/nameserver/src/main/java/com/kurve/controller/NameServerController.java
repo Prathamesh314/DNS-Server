@@ -24,7 +24,7 @@ public class NameServerController {
 
     @GetMapping("/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> getResponse(@PathVariable String name){
+    public ResponseEntity<?> getResponse(@PathVariable String name) throws Exception {
         Bucket bucket = rateLimitConfig.resolveBucket(name);
         if(bucket.tryConsume(1)){
             NameServerResponse response = service.getResponse(name);
