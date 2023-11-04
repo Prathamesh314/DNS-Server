@@ -22,23 +22,14 @@ import java.util.Random;
 public class NameServerService {
 
     private final WebClient.Builder webClient;
-//    private final TerminalCommandsGetter getter;
 
     public NameServerResponse getResponse(String name) throws Exception {
-        Random random = new Random();
-        int a = random.nextInt(128);
-        int b = random.nextInt(255);
-        int c = random.nextInt(255);
-        int d = random.nextInt(255);
-        String ip = Integer.toString(a) + "." + Integer.toString(b) + "." + Integer.toString(c) + "." + Integer.toString(d);
         TLDResponse response = webClient.build().get().uri("http://TOP-LEVEL-DOMAIN/tld/"+name).retrieve().bodyToMono(TLDResponse.class)
                 .block();
         boolean result = response.getValid();
         if(result) {
             Runner runner = new Runner(name);
             runner.run();
-//            getter.setweb(name);
-//            getter.run("Run");
             String ipp = runner.getIp();
             return NameServerResponse.builder()
                     .name(name)
