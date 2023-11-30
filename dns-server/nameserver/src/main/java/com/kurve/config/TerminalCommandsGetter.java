@@ -18,7 +18,7 @@ public class TerminalCommandsGetter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
-            String command = "ping "+this.website;
+            String command = "nslookup "+this.website;
 
             ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
             processBuilder.redirectErrorStream(true);
@@ -35,10 +35,8 @@ public class TerminalCommandsGetter implements CommandLineRunner {
                 throw new IOException(arr.get(0));
             }
             else{
-                String line1 = arr.get(0);
-                int ind1 = line.indexOf('[');
-                int ind2 = line.lastIndexOf(']');
-                ipAddress = line1.substring(ind1, ind2);
+                String line1 = arr.get(arr.size()-1);
+                ipAddress = line1.trim();
             }
             int exitCode = process.waitFor();
             System.out.println("Command exited with code: " + exitCode);

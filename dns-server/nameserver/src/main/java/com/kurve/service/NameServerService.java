@@ -57,7 +57,7 @@ public class NameServerService {
         @Override
         public void run(String... args) throws Exception {
             try {
-                String command = "ping "+this.name;
+                String command = "nslookup "+this.name;
 
                 ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
                 processBuilder.redirectErrorStream(true);
@@ -75,22 +75,23 @@ public class NameServerService {
                     throw new IOException(arr.get(0));
                 }
                 else{
-                    for(String s:arr){
-                        System.out.println(s);
-                    }
-                    String line1 = arr.get(1);
-                    int ind1 = 0;
-                    int ind2 = 0;
-                    for(int i=0;i<line1.length();i++) {
-                        if (line1.charAt(i) == '[') {
-                            ind1 = i;
-                        }
-                        if(line1.charAt(i) == ']'){
-                            ind2 = i;
+                    int index = -1;
+                    int i = 0;
+                    for(String s:arr)
+                    {
+                        if(s.startsWith("Addresses")){
+                            index=i;
                             break;
                         }
+                        i++;
                     }
-                    ipAddress = line1.substring(ind1+1, ind2);
+                    while(!arr.get(index).startsWith("Aliases") && index < arr.size()-1){
+//                    System.out.println(arr.get(index));
+                        index++;
+                    }
+                    index--;
+//                    System.out.println(arr.get(index).trim());
+                    ipAddress = arr.get(index).trim();
                 }
                 int exitCode = process.waitFor();
                 System.out.println("Command exited with code: " + exitCode);
